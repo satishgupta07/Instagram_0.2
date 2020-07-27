@@ -13,7 +13,10 @@ const Home = () => {
                <i class="material-icons" style={{color:"red"}}>favorite</i>
                   <h6>title</h6>
                   <p>this is amazing post</p>
-                  <input type="text" placeholder="add a comment"/>
+                  <div style={{display: "flex"}} >
+                      <input type="text" placeholder="add a comment"/>
+                      <button className="btn-floating btn waves-effect waves-light blue"><i class="material-icons">send</i></button>
+                  </div>
                </div>
            </div>
 
@@ -26,7 +29,10 @@ const Home = () => {
                <i class="material-icons" style={{color:"red"}}>favorite</i>
                   <h6>title</h6>
                   <p>this is amazing post</p>
-                  <input type="text" placeholder="add a comment"/>
+                  <div style={{display: "flex"}} >
+                      <input type="text" placeholder="add a comment"/>
+                      <button className="btn-floating btn waves-effect waves-light blue"><i class="material-icons">send</i></button>
+                  </div>
                </div>
            </div>
 
@@ -39,7 +45,10 @@ const Home = () => {
                <i class="material-icons" style={{color:"red"}}>favorite</i>
                   <h6>title</h6>
                   <p>this is amazing post</p>
-                  <input type="text" placeholder="add a comment"/>
+                  <div style={{display: "flex"}} >
+                      <input type="text" placeholder="add a comment"/>
+                      <button className="btn-floating btn waves-effect waves-light blue"><i class="material-icons">send</i></button>
+                  </div>
                </div>
            </div>
 
@@ -52,7 +61,10 @@ const Home = () => {
                <i class="material-icons" style={{color:"red"}}>favorite</i>
                   <h6>title</h6>
                   <p>this is amazing post</p>
-                  <input type="text" placeholder="add a comment"/>
+                  <div style={{display: "flex"}} >
+                      <input type="text" placeholder="add a comment"/>
+                      <button className="btn-floating btn waves-effect waves-light blue"><i class="material-icons">send</i></button>
+                  </div>
                </div>
            </div>
 
