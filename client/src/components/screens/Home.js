@@ -20,7 +20,7 @@ const Home = () => {
             data.map(item=>{
                 return(
                     <div className="card home-card" key={item._id}>
-               <h5>{item.postedBy.name}</h5>
+               <h5>Suresh</h5>
                <div className="card-image">
                    <img src={item.photo} alt="img1"/>
                </div>
