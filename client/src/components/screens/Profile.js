@@ -1,6 +1,19 @@
-import React from 'react';
+import React,{useEffect,useState,useContext} from 'react';
+import {UserContext} from '../../App'
 
 const Profile = () => {
+    const [mypics,setPics] = useState([])
+    const {state,dispatch} = useContext(UserContext)
+      useEffect(()=>{
+          fetch('/mypost',{
+              headers:{
+                  "Authorization":"Bearer "+localStorage.getItem("jwt")
+              }
+          }).then(res=>res.json())
+          .then(result=>{
+              setPics(result.mypost)
+          })
+      },[])
     return (
         <div style={{maxWidth:"550px",margin:"0px auto"}}>
             <div style={{
@@ -17,7 +30,7 @@ const Profile = () => {
                     />
                 </div>
                 <div>
-                    <h4>Ramesh Verma</h4>
+                    <h4>{state.name}</h4>
                     <div style={{display:"flex",justifyContent:"space-around",width:"108%"}}>
                         <h6>40 posts</h6>
                         <h6>40 followers</h6>
@@ -27,12 +40,13 @@ const Profile = () => {
             </div>
             
             <div className="gallery">
-                <img className="item" src="https://images.unsplash.com/flagged/photo-1572262107271-baad9a8c8709?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="item1" />
-                <img className="item" src="https://images.unsplash.com/photo-1589016025017-a2080e95326f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="item2" />
-                <img className="item" src="https://images.unsplash.com/photo-1570601776212-d01bc620a021?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="item3" />
-                <img className="item" src="https://images.unsplash.com/photo-1567351673954-0cb49f639dc4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="item4" />
-                <img className="item" src="https://images.unsplash.com/photo-1575206041841-75e1bfb62c0c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="item5" />
-                <img className="item" src="https://images.unsplash.com/photo-1541938226462-8620de5ac914?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="item6" />
+                   {
+                       mypics.map(item=>{
+                           return(
+                            <img key={item._id} className="item" src={item.photo} alt={item.title} />
+                           )
+                       })
+                    }
             </div>
         </div>
     )
