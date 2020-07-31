@@ -24,10 +24,9 @@ const Profile = () => {
                 borderBottom:"1px solid grey"
             }}>
                 <div> 
-                    <img style={{width:"160px",height:"160px",borderRadius:"80px"}}
-                        src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" 
-                        alt="profile_pic"
-                    />
+                <img style={{width:"160px",height:"160px",borderRadius:"80px"}}
+                   src={state?state.pic:"loading"}
+                   />
                 </div>
                 <div>
                     <h4>{state?state.name:"loading"}</h4>
