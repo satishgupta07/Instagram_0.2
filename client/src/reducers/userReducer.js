@@ -7,14 +7,14 @@ export const reducer = (state,action)=>{
     if(action.type==="CLEAR"){
         return null
     }
-    if(action.type=="Update"){
+    if(action.type==="Update"){
         return {
             ...state,
             follower: action.payload.followers,
             following:action.payload.following
         }
     }
-    if(action.type=="UPDATEPIC"){
+    if(action.type==="UPDATEPIC"){
         return {
             ...state,
             pic:action.payload
