@@ -3,12 +3,14 @@ const router = express.Router()
 const mongoose = require('mongoose')
 const { json } = require('express')
 const User = mongoose.model("User")
+const crypto = require('crypto')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {JWT_SECRET} = require('../config/keys')
 const requireLogin = require('../middleware/requireLogin')
 const nodemailer = require('nodemailer')
 const sendgridTransport = require('nodemailer-sendgrid-transport')
+const { error } = require('console')
 
 // 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
 
@@ -88,6 +90,35 @@ router.post('/signin', (req,res)=>{
             console.log(err)
         })
     })
+})
+
+router.post('/reset-password',(req,res)=>{
+     crypto.randomBytes(32,(err,buffer)=>{
+         if(err){
+             console.log(err)
+         }
+         const token = buffer.toString("hex")
+         User.findOne({email:req.body.email})
+         .then(user=>{
+             if(!user){
+                 return res.status(422).json({error:"User don't exists with that email"})
+             }
+             user.resetToken = token
+             user.expireToken = Date.now() + 3600000
+             user.save().then((result)=>{
+                 transporter.sendMail({
+                     to:user.email,
+                     from:"no-reply@insta.com",
+                     subject:"Password Reset",
+                     html:`
+                       <p>You requested for password reset</p>
+                       <h5>Click on this <a href="http://localhost:3000/reset/${token}">link</a> to reset password</h5>
+                     `
+                 })
+                 res.json({message:"check your email"})
+             })
+         })
+     })
 })
 
 module.exports = router

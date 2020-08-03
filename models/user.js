@@ -14,6 +14,8 @@ const userSchema = new mongoose.Schema({
         type:String,
         required: true
     },
+    resetToken:String,
+    expireToken:Date,
     pic:{
         type:String,
         default:"https://res.cloudinary.com/satish07/image/upload/v1596223410/noimage_jzkqg8.png"
