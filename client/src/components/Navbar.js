@@ -88,6 +88,10 @@ const Navbar = () => {
         </div>
 
       </nav>
+
+      <ul class="sidenav" id="mobile-demo">
+             {renderList()}
+      </ul>
       </div>
     )
 }
