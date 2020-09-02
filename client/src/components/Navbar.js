@@ -55,10 +55,11 @@ const Navbar = () => {
     }
 
     return (
+      <div>
         <nav>
         <div className="nav-wrapper white">
           <Link to={state?"/":"/signin"} className="brand-logo">Instagram</Link>
-          <ul id="nav-mobile" className="right">
+          <ul id="nav-mobile" className="right hide-on-med-and-down">
                {renderList()}
           </ul>
         </div>
@@ -87,6 +88,11 @@ const Navbar = () => {
         </div>
 
       </nav>
+
+      <ul class="sidenav" id="mobile-demo">
+               {renderList()}
+          </ul>
+          </div>
     )
 }
 
